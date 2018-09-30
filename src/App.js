@@ -13,28 +13,20 @@ class Button extends Component {
 class App extends Component {
   state = {
     input: '',
-    result: 0,
-    number1: 0,
-    number2: 0
+    result: 0
   }
 
   handleClick = (event) => {
-
-    if (event.target.value.match(/\d/)) {
-
+    if (event.target.value === "=") {
       this.setState({
-        input: this.state.input + event.target.value
-      })
-
-    } else if (event.target.value === "+") {
-
-      console.log('hey')
-      this.setState({
-        number1: this.state.input,
-        result: this.state.result + parseInt(this.state.input, 10),
+        result: eval(this.state.input),
         input: ''
       })
 
+    } else {
+      this.setState({
+        input: this.state.input + event.target.value
+      })
     }
   }
 
