@@ -5,8 +5,7 @@
   grid-template-rows: repeat(5, 1fr);
   margin: 50vh 0 0 50vw ;
   transform: translate(-50%, -50%);
-  grid-gap: 4px;
-  max-width: 250px;
+  max-width: 280px;
   max-height: 350px;
   border: 1px solid rgb(0, 90, 0);
   border-radius: 5px;
@@ -23,13 +22,25 @@
 }
 
 .button {
-  width: 55px;
+  min-width: 55px;
   height: 50px;
   font-size: 16px;
   border-radius: 3px;
   outline: none;
+  margin: 6px;
 }
 
 .button:hover {
   box-shadow: 1px 1px 1px gray;
+}
+
+.button:last-child {
+  grid-column: 3 / 5;
+}
+
+.result {
+  text-align: end;
+  line-height: 26px;
+  padding-top: 6px;
+  overflow: scroll;
 }
