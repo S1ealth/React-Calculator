@@ -2,7 +2,7 @@
   background-color: honeydew;
   display: grid;
   grid-template-columns: repeat(4, 55px);
-  grid-template-rows: repeat(6,  50px);
+  grid-template-rows: repeat(autofit,  50px);
   grid-gap: 4px;
   margin: 50vh 0 0 50vw ;
   transform: translate(-50%, -50%);
@@ -37,8 +37,4 @@
 
 .button:hover {
   box-shadow: 1px 1px 1px gray;
-}
-
-.button:last-child {
-  grid-column: 3 / 5;
 }

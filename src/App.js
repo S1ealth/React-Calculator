@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const numbers = [ 7, 8, 9, '*', 4, 5, 6, '/', 1, 2, 3, '-', '=', 0, '+' ]
+const numbers = [ '(', ')', '**', 'del', 7, 8, 9, '*', 4, 5, 6, '/', 1, 2, 3,'-', '.', 0, '=', '+']
 
 class Button extends Component {
   render() {
@@ -10,7 +10,9 @@ class Button extends Component {
       className="button" 
       value={this.props.value} 
       onClick={this.props.onClick}>
-        {this.props.value}
+          {this.props.value !== "**" 
+            ? this.props.value 
+            : "pow"}
     </button>
   )}
 }
