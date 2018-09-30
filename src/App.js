@@ -10,7 +10,6 @@ class Button extends Component {
   )}
 }
 
-const regexInput = /\d/
 class App extends Component {
   state = {
     input: '',
@@ -20,11 +19,22 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    console.log(event.target.value)
-    if (event.target.value.match(regexInput)) {
+
+    if (event.target.value.match(/\d/)) {
+
       this.setState({
         input: this.state.input + event.target.value
       })
+
+    } else if (event.target.value === "+") {
+
+      console.log('hey')
+      this.setState({
+        number1: this.state.input,
+        result: this.state.result + parseInt(this.state.input, 10),
+        input: ''
+      })
+
     }
   }
 
@@ -32,9 +42,10 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-          <h3 className="result">
-              {this.state.input}
-          </h3>
+          <div className="result">
+              <p>Input: {this.state.input}</p>
+              <p>Result: {this.state.result}</p>
+          </div>
           {numbers.map(item => 
 
                         <Button 
