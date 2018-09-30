@@ -6,7 +6,12 @@ const numbers = [ 7, 8, 9, '*', 4, 5, 6, '/', 1, 2, 3, '-', '=', 0, '+' ]
 class Button extends Component {
   render() {
   return (
-    <button className="button" value={this.props.value} onClick={this.props.onClick}>{this.props.value}</button>
+    <button 
+      className="button" 
+      value={this.props.value} 
+      onClick={this.props.onClick}>
+        {this.props.value}
+    </button>
   )}
 }
 
