@@ -11,8 +11,6 @@
   display: grid;
   grid-template-columns: repeat(4, 55px);
   grid-gap: 4px;
-  max-width: 236px;
-  min-height: 324px;
   border: 1px solid rgb(0, 90, 0);
   border-radius: 5px;
   padding: 4px;
@@ -28,12 +26,11 @@
   text-align: end;
   line-height: 20px;
   font-size: 16px;
-  padding-top: 4px;
   overflow: scroll;
 }
 
 .button {
-  min-width: 55px;
+  width: 55px;
   height: 50px;
   font-size: 16px;
   border-radius: 3px;
