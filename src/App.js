@@ -30,6 +30,7 @@ class App extends Component {
       })
 
     } else if (event.target.value === "=") {
+
       this.setState({
         result: eval(this.state.input),
         input: ''
