@@ -24,7 +24,12 @@ class App extends Component {
   }
 
   handleClick = (event) => {
-    if (event.target.value === "=") {
+    if (event.target.value === "del") {
+      this.setState({
+        input: this.state.input.slice(0, this.state.input.length - 1)
+      })
+
+    } else if (event.target.value === "=") {
       this.setState({
         result: eval(this.state.input),
         input: ''
