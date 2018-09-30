@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const numbers = [ 1, 2, 3, '*', 4, 5, 6, '/', 7, 8, 9, '-', '.', 0, '=', '+' ]
+const numbers = [ 7, 8, 9, '*', 4, 5, 6, '/', 1, 2, 3, '-', '=', 0, '+' ]
 
 class Button extends Component {
   render() {
@@ -10,7 +10,7 @@ class Button extends Component {
   )}
 }
 
-const regexInput = /\.?\d/
+const regexInput = /\d/
 class App extends Component {
   state = {
     input: '',
@@ -39,7 +39,7 @@ class App extends Component {
 
                         <Button 
                           key={item} 
-                          className="button" 
+                          className="button"  
                           value={item} 
                           onClick={this.handleClick}
                         />
