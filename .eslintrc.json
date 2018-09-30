@@ -1,0 +1,36 @@
+{
+    "extends": ["eslint:recommended", "google","plugin:react/recommended"],
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "linebreak-style":["error","windows"],
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "require-jsdoc":"off",
+        "no-console":"warn"
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": false
+    },
+    "plugins": [
+        "react"
+      ],
+      "settings": {
+        "react": {
+          "createClass": "createReactClass",
+                                            
+          "pragma": "React",  
+          "version": "15.0", 
+          "flowVersion": "0.53" 
+        },
+        "propWrapperFunctions": [ "forbidExtraProps" ]
+      }
+}

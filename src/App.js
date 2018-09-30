@@ -1,68 +1,144 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-
-const numbers = [ '(', ')', '**', 'del', 7, 8, 9, '*', 4, 5, 6, '/', 1, 2, 3,'-', '.', 0, '=', '+']
-
-class Button extends Component {
-  render() {
+import PropTypes from 'prop-types';
+// math functions
+// function multiply(x, y) {
+//   return x * y;
+// }
+function Button(props) {
   return (
-    <button 
-      className="button" 
-      value={this.props.value} 
-      onClick={this.props.onClick}>
-          {this.props.value !== "**" 
-            ? this.props.value 
-            : "pow"}
+    <button
+      className='button'
+      type='button'
+      value={props.value}
+      onClick={props.onClick}
+    >
+      {props.value}
     </button>
-  )}
+  );
 }
-
-class App extends Component {
-  state = {
-    input: '',
-    result: 0
+Button.propTypes = {
+  onClick: PropTypes.func,
+  value: PropTypes.node,
+};
+class Calculator extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      number1: null, // we are number one. Hey Hey
+      number2: null,
+      numbers: [],
+      actions: '',
+      input: '',
+      mathAction: null,
+      result: null,
+    };
   }
-
-  handleClick = (event) => {
-    if (event.target.value === "del") {
-      this.setState({
-        input: this.state.input.slice(0, this.state.input.length - 1)
-      })
-
-    } else if (event.target.value === "=") {
-
-      this.setState({
-        result: eval(this.state.input),
-        input: ''
-      })
-
-    } else {
-      this.setState({
-        input: this.state.input + event.target.value
-      })
+  handleMath(value1, value2, action) {
+    if (action === '*') {
+      return value1 * value2;
     }
   }
-
-
+  handleClick(e) {
+    let value = e.target.value;
+    let {number1, number2, input} = this.state;
+    if (Number(value) >= 0) {
+      if (input === '' && Number(value) === 0) {
+        return;
+      } else {
+        this.setState({
+          input: input.concat(e.target.value),
+        });
+      }
+    } else if (value === 'del') {
+      this.setState({
+        input: '',
+        number1: null,
+        number2: null,
+        mathAction: null,
+        result: null,
+      });
+    } else if (
+      value === '*'||value ==='/'||value ==='+'||value === '-'||value === '='
+    ) {
+      if (number1 === null) {
+        this.setState({
+          number1: input,
+          mathAction: value,
+          input: '',
+        });
+      } else if (number2 === null) {
+        this.setState({
+          number2: input,
+        });
+      } else {
+        console.log(value);
+        return;
+      }
+    }
+  }
+  componentWillMount() {
+    const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const actionsArr = ['*', '/', '+', '-', '=', 'del'];
+    this.setState({
+      numbers: numArr.map((number) => {
+        return (
+          {
+            type: 'number',
+            value: number,
+            action: false,
+          }
+        );
+      }),
+      actions: actionsArr.map((action)=> {
+        return (
+          {
+            type: action,
+            value: action,
+            action: true,
+          });
+      }),
+    });
+  }
+  componentDidUpdate(prevProps) {
+    let {number1, number2, mathAction, result} = this.state;
+    if ( number1 !== null && number2 !== null && result === null) {
+      this.setState({
+        result: this.handleMath(number1, number2, mathAction),
+      });
+    }
+  }
   render() {
+    const {numbers, actions, input, result} = this.state;
+    const actionBoard = actions.map((action) => {
+      return (
+        <Button
+          key={action.value}
+          value={action.value}
+          onClick={(action) => this.handleClick(action)}
+        />
+      );
+    });
+    const numberBoard = numbers.map((number) => {
+      return (
+        <Button
+          key={number.value}
+          value={number.value}
+          onClick={(action) => this.handleClick(action)}
+        />
+      );
+    });
     return (
       <div className="container">
-          <div className="result">
-              <p>Input: {this.state.input}</p>
-              <p>Result: {this.state.result}</p>
-          </div>
-          {numbers.map(item => 
-
-                        <Button 
-                          key={item} 
-                          className="button"  
-                          value={item} 
-                          onClick={this.handleClick}
-                        />
-          )}
+        <div className="result">
+          <p>Input: {input}</p>
+          <p>Result: {result}</p>
+        </div>
+        {numberBoard}
+        {actionBoard}
       </div>
     );
   }
 }
 
-export default App;
+export default Calculator;
