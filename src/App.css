@@ -1,4 +1,35 @@
 .container {
-  text-align: center;
   background-color: honeydew;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  margin: 50vh 0 0 50vw ;
+  transform: translate(-50%, -50%);
+  grid-gap: 4px;
+  max-width: 250px;
+  max-height: 350px;
+  border: 1px solid rgb(0, 90, 0);
+  border-radius: 5px;
+  padding: 4px 0 0 4px;
+}
+
+.result {
+  grid-column: 1 / -1;
+  background-color: aliceblue;
+  border: 1px solid rgb(0, 90, 0);
+  border-radius: 5px;
+  height: 50px;
+  margin-right: 4px;
+}
+
+.button {
+  width: 55px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.button:hover {
+  box-shadow: 1px 1px 1px gray;
 }
