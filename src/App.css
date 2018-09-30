@@ -2,7 +2,6 @@
   background-color: honeydew;
   display: grid;
   grid-template-columns: repeat(4, 55px);
-  grid-template-rows: repeat(autofit,  50px);
   grid-gap: 4px;
   margin: 50vh 0 0 50vw ;
   transform: translate(-50%, -50%);
@@ -10,7 +9,7 @@
   min-height: 324px;
   border: 1px solid rgb(0, 90, 0);
   border-radius: 5px;
-  padding: 4px 0 0 4px;
+  padding: 4px 0 4px 4px;
 }
 
 .result {
